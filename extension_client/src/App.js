@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-// import './styles/garbage.css';
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import CustomNavbar from "./components/ui/navbar/CustomNavbar";
 import AppRouter from "./components/AppRouter";

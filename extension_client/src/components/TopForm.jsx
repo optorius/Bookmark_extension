@@ -10,11 +10,13 @@ import classes from './TopForm.module.css'
 import CustomModal from "./ui/modal/CustomModal";
 import ModalButton from "./ui/button/ModalButton";
 import Loader from "./ui/loader/Loader";
+import PopupLabel from "./ui/label/PopupLabel";
 
 const TopForm = observer(() => {
 
     const [modalLogin, setModalLogin] = useState(false);
     const [modalRegister, setModalRegister] = useState(false);
+    const [isAbout, setIsAbout] = useState( false );
 
     const [errorModal, setErrorModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -85,7 +87,32 @@ const TopForm = observer(() => {
                 }}>
                 Sign up
             </div>
-            <Link to="/about">About</Link>
+
+            <CustomModal visible={isAbout} setVisible={setIsAbout}>
+            <div className={classes.modalContent}>
+                        <h2> About </h2>
+                        <div className={classes.About}>
+                            <div>
+                            <PopupLabel>Email:</PopupLabel><a href="mailto:bookmarkex0@gmail.com">bookmarkex0@gmail.com</a>
+                            </div>
+                            <div>
+                            <PopupLabel>Code:</PopupLabel><a href="https://github.com/optorius/Bookmark_extension" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                            </div>
+                        </div>
+                        <ModalButton onClick={(e) => {
+                            e.preventDefault();
+                            setIsAbout(false)
+                        }
+                        }>OK</ModalButton>
+                    </div>
+            </CustomModal>
+            <div style={{ cursor: 'pointer' }}
+                onClick={(e) => {
+                    e.preventDefault();
+                    setIsAbout(true);
+                }}>
+                About
+            </div>
         </div>
     );
 });

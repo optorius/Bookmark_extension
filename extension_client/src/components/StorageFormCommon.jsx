@@ -117,11 +117,6 @@ const StorageForm = observer(() => {
 
     return (
         <div className={classes.storageForm}>
-            {
-                fetchError &&
-                <h1>Catched an error while fetching: {fetchError}</h1>
-            }
-
             <CustomModal visible={modalSettings} setVisible={setModalSettings}>
                 <StorageSettingsForm />
             </CustomModal>
