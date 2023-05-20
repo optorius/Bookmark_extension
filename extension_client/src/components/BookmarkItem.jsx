@@ -69,7 +69,7 @@ const BookmarkItem = (props) => {
                             <a href={props.bookmark.url}>URL: {props.bookmark.url}</a>
                             <StorageLabel>Added time: {props.bookmark.dateAdded}</StorageLabel>
                             {
-                                (props.bookmark.dateModified.length != 0) ?
+                                ( props.bookmark.dateModified && props.bookmark.dateModified.length != 0) ?
                                 <StorageLabel>Edit time: {props.bookmark.dateModified}</StorageLabel> : null
                             }
                             {
