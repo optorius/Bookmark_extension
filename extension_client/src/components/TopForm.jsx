@@ -1,16 +1,15 @@
-import store, { AuthState } from "../store/store";
-import RegistrationForm from "./RegistrationForm";
-import LoginForm from "./LoginForm";
-import AuthModal from "./ui/modal/AuthModal";
-import LogoutForm from "./LogoutForm";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import classes from './TopForm.module.css'
-import CustomModal from "./ui/modal/CustomModal";
+import store, { AuthState } from "../store/store";
+import LoginForm from "./LoginForm";
+import LogoutForm from "./LogoutForm";
+import RegistrationForm from "./RegistrationForm";
+import classes from './TopForm.module.css';
 import ModalButton from "./ui/button/ModalButton";
-import Loader from "./ui/loader/Loader";
 import PopupLabel from "./ui/label/PopupLabel";
+import AuthModal from "./ui/modal/AuthModal";
+import CustomModal from "./ui/modal/CustomModal";
 
 const TopForm = observer(() => {
 

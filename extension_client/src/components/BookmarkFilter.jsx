@@ -1,7 +1,7 @@
 import React from 'react';
+import classes from "./BookmarkFilter.module.css";
 import SearchInput from "./ui/input/SearchInput";
 import CustomSelect from "./ui/select/CustomSelect";
-import classes from "./BookmarkFilter.module.css";
 
 const BookmarkFilter = ( { filter, setFilter } ) => {
     return (

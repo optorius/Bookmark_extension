@@ -1,5 +1,4 @@
 import api_axios from "../http";
-import axios from "axios";
 
 export default class MailService {
 

@@ -1,23 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
-import CustomNavbar from "./components/ui/navbar/CustomNavbar";
+import React, { useEffect } from 'react';
+import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./components/AppRouter";
-import {AuthContext} from "./context/AuthContext";
-import CustomModal from "./components/ui/modal/CustomModal";
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-// import { StoreContext} from "./context/StoreContext";
-import Store, {AuthState} from "./store/store";
-import {createContext} from "react";
-import {observer} from "mobx-react-lite";
-import store from "./store/store";
-import {SetState} from "./support/SetState";
-import {useMoveFromStorage} from "./support/MoveFromStorage";
-import useAsyncStorage from "./hooks/useAsyncStorage";
-import { SetSettings } from './support/SetSettings';
-import { SetCategories } from './support/SetCategories';
-import { GetBadBookmarks } from './support/GetBadBookmarks';
+import { observer } from "mobx-react-lite";
+import store, { AuthState } from "./store/store";
 import { cleanUpTrash } from './support/CleanUpTrash';
+import { GetBadBookmarks } from './support/GetBadBookmarks';
+import { SetCategories } from './support/SetCategories';
+import { SetSettings } from './support/SetSettings';
+import { SetState } from "./support/SetState";
 import { SetUser } from './support/SetUser';
+
 const App = () => {
     useEffect(() => {
         store.checkAuth();

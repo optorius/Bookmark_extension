@@ -1,11 +1,10 @@
-import {makeAutoObservable} from "mobx";
-import AuthService from "../services/AuthService";
 import axios from "axios";
-import {API_URL} from "../http";
-import settingsService from "../services/SettingsService";
-import { useState } from "react";
+import { makeAutoObservable } from "mobx";
 import browser from 'webextension-polyfill';
+import { API_URL } from "../http";
+import AuthService from "../services/AuthService";
 import bookmarksService from "../services/BookmarksService";
+import settingsService from "../services/SettingsService";
 import { BookmarkEntity } from "../support/BookmarkEntity";
 
 async function checkAction(callback) {

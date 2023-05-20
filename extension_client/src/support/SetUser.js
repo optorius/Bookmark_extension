@@ -1,6 +1,5 @@
-import {useEffect} from "react";
-import store, {AuthState} from "../store/store";
 import userService from "../services/UserService";
+import store, { AuthState } from "../store/store";
 
 export const SetUser = async () => {
     let user = localStorage.getItem('user');

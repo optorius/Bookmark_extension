@@ -1,29 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import PopupInput from "./ui/input/PopupInput";
-import CategoryInput from "./ui/input/CategoryInput";
-import PopupButton from "./ui/button/PopupButton";
-import BookmarkList from "./BookmarkList";
-import CustomTextarea from "./ui/textarea/CustomTextarea";
-import {Link, useNavigate} from "react-router-dom";
-import CustomNavbar from "./ui/navbar/CustomNavbar";
-import browser, { storage } from 'webextension-polyfill';
+import { observer } from "mobx-react-lite";
+import React, { useEffect, useState } from 'react';
+import browser from 'webextension-polyfill';
 import useAsyncStorage from "../hooks/useAsyncStorage";
-import LoginForm from "./LoginForm";
-import store, {AuthState} from "../store/store";
-import {observer} from "mobx-react-lite";
+import store, { AuthState } from "../store/store";
 import classes from './PopupForm.module.css';
+import PopupButton from "./ui/button/PopupButton";
+import CategoryInput from "./ui/input/CategoryInput";
+import PopupInput from "./ui/input/PopupInput";
+import CustomTextarea from "./ui/textarea/CustomTextarea";
 
 
-import {BookmarkEntity} from "../support/BookmarkEntity";
-import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
-import PopupNavbar from './ui/navbar/PopupNavbar';
-import { categorizeBookmarks } from '../support/categorizeBookmarks';
-import bookmarksService from '../services/bookmarksService';
-import PopupLabel from './ui/label/PopupLabel';
-import AuthModal from './ui/modal/AuthModal';
-import RegistrationForm from './RegistrationForm';
+import { generateUniqueID } from "web-vitals/dist/modules/lib/generateUniqueID";
+import bookmarksService from '../services/BookmarksService';
+import { BookmarkEntity } from "../support/BookmarkEntity";
 import TopForm from './TopForm';
-import { remove } from 'mobx';
+import PopupLabel from './ui/label/PopupLabel';
 const validator = require('validator');
 
 // я знаю что можно избавиться от дублирования в этой функции, 5/18/2023

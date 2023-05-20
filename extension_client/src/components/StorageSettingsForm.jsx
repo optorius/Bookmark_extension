@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
-import SettingsInput from './ui/input/SettingsInput';
-import StorageButton from './ui/button/StorageButton';
-import StorageLabel from './ui/label/StorageLabel';
-import classes from './StorageSettingsForm.module.css';
-import store, {AuthState} from "../store/store";
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
 import settingsService from "../services/SettingsService";
 import UserService from '../services/UserService';
+import store, { AuthState } from "../store/store";
+import classes from './StorageSettingsForm.module.css';
+import StorageButton from './ui/button/StorageButton';
+import SettingsInput from './ui/input/SettingsInput';
+import StorageLabel from './ui/label/StorageLabel';
 
 const SettingsForm = ( { setVisible }) => {
 

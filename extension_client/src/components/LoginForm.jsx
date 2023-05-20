@@ -1,16 +1,12 @@
-import React, {useContext} from 'react';
-import AuthInput from "./ui/input/AuthInput";
-import {useState} from "react";
-import PopupButton from "./ui/button/PopupButton";
-import {AuthContext} from "../context/AuthContext";
-import {useNavigate} from "react-router-dom";
-import {observer} from "mobx-react-lite";
-import store, {AuthState} from "../store/store";
-import Loader from "./ui/loader/Loader";
-import CustomModal from "./ui/modal/CustomModal";
+import { observer } from "mobx-react-lite";
+import React, { useState } from 'react';
+import store from "../store/store";
 import classes from "./LoginForm.module.css";
-import { isCredValid } from './utils/isCredValid';
+import PopupButton from "./ui/button/PopupButton";
+import AuthInput from "./ui/input/AuthInput";
+import Loader from "./ui/loader/Loader";
 import LoadingModal from './ui/modal/LoadingModal';
+import { isCredValid } from './utils/isCredValid';
 
 const LoginForm = ( { handleSuccess, handleError } ) => {
     const [account, setAccount] = useState( { email: '', password: '' } );

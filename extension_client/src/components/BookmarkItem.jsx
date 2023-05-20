@@ -1,17 +1,13 @@
-import React, {useState} from 'react';
-import StorageButton from "./ui/button/StorageButton";
-import {useNavigate} from "react-router-dom";
-import CustomTextarea from "./ui/textarea/CustomTextarea";
-import PopupInput from "./ui/input/PopupInput";
-import StorageLabel from './ui/label/StorageLabel';
-import CustomInput from './ui/input/CustomInput';
-import classes from "./BookmarkItem.module.css";
-import { useEffect } from 'react';
-import store from "../store/store";
-import { observer } from 'mobx-react-lite';
-import { AuthState } from '../store/store';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { observer } from 'mobx-react-lite';
+import React, { useState } from 'react';
+import store, { AuthState } from "../store/store";
+import classes from "./BookmarkItem.module.css";
+import StorageButton from "./ui/button/StorageButton";
+import CustomInput from './ui/input/CustomInput';
+import StorageLabel from './ui/label/StorageLabel';
+import CustomTextarea from "./ui/textarea/CustomTextarea";
 
 
 const BookmarkItem = (props) => {

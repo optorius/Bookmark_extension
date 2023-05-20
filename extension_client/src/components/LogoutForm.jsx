@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
-import {observer} from "mobx-react-lite";
-import store, {AuthState} from "../store/store";
+import { observer } from "mobx-react-lite";
+import React from 'react';
+import store from "../store/store";
 
 const LogoutForm = ( { handleSuccess, handleError } ) => {
     return (

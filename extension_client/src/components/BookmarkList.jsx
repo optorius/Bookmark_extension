@@ -3,13 +3,9 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import BookmarkItem from './BookmarkItem';
 import classes from './BookmarkList.module.css';
 
-import FolderIcon from '@material-ui/icons/Folder';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { faFolder, faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinusSquare, faPlusSquare, faFolder, faTrash } from '@fortawesome/free-solid-svg-icons';
-import StorageLabel from './ui/label/StorageLabel';
 
 
 const BookmarkList = ({ bookmarks, removeBookmark, updateBookmark, restoreBookmark }) => {

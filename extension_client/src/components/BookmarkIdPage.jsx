@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
-import {useFetching} from "../hooks/useFetching";
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import { useFetching } from "../hooks/useFetching";
 import Loader from "./ui/loader/Loader";
 
 // @note this function is unused/////////////////////////////////////////////

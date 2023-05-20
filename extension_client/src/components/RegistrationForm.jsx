@@ -1,13 +1,11 @@
-import React from 'react';
-import AuthInput from "./ui/input/AuthInput";
-import {useState} from "react";
+import { observer } from "mobx-react-lite";
+import React, { useState } from 'react';
+import store from "../store/store";
+import classes from "./RegistrationForm.module.css";
 import PopupButton from "./ui/button/PopupButton";
-import {useNavigate} from "react-router-dom";
-import {observer} from "mobx-react-lite";
-import store, {AuthState} from "../store/store";
+import AuthInput from "./ui/input/AuthInput";
 import Loader from "./ui/loader/Loader";
 import LoadingModal from "./ui/modal/LoadingModal";
-import classes from "./RegistrationForm.module.css";
 import { isCredValid } from './utils/isCredValid';
 
 const RegistrationForm = ({ handleSuccess, handleError }) => {

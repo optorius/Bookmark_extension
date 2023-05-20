@@ -1,8 +1,7 @@
-import About from "../pages/About";
-import Storage from "../pages/Storage";
-import Popup from "../pages/Popup";
 import BookmarkIdPage from "../components/BookmarkIdPage";
 import Login from "../pages/Login";
+import Popup from "../pages/Popup";
+import Storage from "../pages/Storage";
 
 export const routes = [
     { path: '/storage', element: <Storage/> , exact: true },

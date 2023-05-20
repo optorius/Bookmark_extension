@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import { observer } from "mobx-react-lite";
+import React from "react";
 import PopupForm from "../components/PopupForm";
-import {observer} from "mobx-react-lite";
 
 function Popup() {
     return (
