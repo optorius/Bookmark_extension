@@ -1,0 +1,134 @@
+.bookmarkItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #F9F9F9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s;
+}
+
+.compactBookmarkItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.compactBookmarkItem .faTimes {
+    color: #ff0000;
+    cursor: pointer;
+    font-size: 1.2em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.compactBookmarkItem .faTimes:hover {
+    color: #cc0000;
+}
+
+.bookmarkUrlCompact {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+    display: block;  /* changed from inline-block */
+    width: 100%;     /* added to take full width */
+    position: relative;
+    padding-bottom: 2px;
+    padding-right: 30px;  /* added to prevent overlap with icon */
+}
+
+.bookmarkUrlCompact::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #007BFF;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.bookmarkUrlCompact:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.bookmarkUrlCompact:hover {
+    color: #0056b3;
+}
+
+.bookmarkItem a {
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+    font-weight: bold;
+}
+
+.bookmarkItem a:hover {
+    color: #007BFF;
+}
+
+.bookmarkItem label {
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 1.0rem;
+}
+
+.bookmarkItem input,
+.bookmarkItem textarea {
+    font-size: 1.0rem;
+}
+
+.bookmarkItem button {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.additionInformation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.additionInformation:hover {
+    background-color: #e9ecef;
+}
+
+.staticInformation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.staticInformation a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.staticInformation a:hover {
+    text-decoration: underline;
+}
+
+.lockIcon {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.lockIcon:hover {
+    color: #007bff;
+}

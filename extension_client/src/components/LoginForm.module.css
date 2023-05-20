@@ -1,0 +1,35 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.loginForm h2 {
+    font-size: 1.6em;
+    color: #000;
+}
+
+.authInput {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0 15px 0;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+.authInput:focus {
+    outline: auto;
+}
+
+.authButton {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+

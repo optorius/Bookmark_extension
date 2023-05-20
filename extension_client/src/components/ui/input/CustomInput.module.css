@@ -1,0 +1,28 @@
+.customInput {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    --input-placeholder-color: #888;
+}
+
+.customInput::placeholder {
+    color: var(--input-placeholder-color);
+}
+
+.customInput:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.25);
+}
+
+.customInput:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+}

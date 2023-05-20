@@ -1,0 +1,28 @@
+.customSelectContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.customSelect {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #333;
+    background: #FFF;
+    transition: border-color 0.3s;
+}
+
+.customSelect:hover {
+    border-color: #CCC;
+}
+
+.customSelect:focus {
+    border-color: #333;
+    outline: none;
+}

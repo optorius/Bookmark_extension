@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Bookmark extension",
+  "version": "2.0",
+  "description": "Storage of bookmarks",
+  "icons": {
+    "192": "star.png"
+  },
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": "star.png",
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["../src/index.js"]
+  },
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "http://localhost:5050/"
+  ]
+}

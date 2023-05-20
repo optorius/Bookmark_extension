@@ -1,0 +1,30 @@
+.customTextarea {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    resize: none;
+    min-height: 75px;
+    margin-bottom: 1rem;
+    --textarea-placeholder-color: #888;
+}
+
+.customTextarea::placeholder {
+    color: var(--textarea-placeholder-color);
+}
+
+.customTextarea:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.25);
+}
+
+.customTextarea:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+}

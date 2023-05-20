@@ -1,0 +1,49 @@
+.bookmarkEnter {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.bookmarkEnterActive {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.bookmarkExit {
+    opacity: 1;
+}
+
+.bookmarkExitActive {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.bookmarkList {
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.bookmarkList h2 {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1rem;
+}
+
+.bookmarkList .faFolder,
+.bookmarkList .faTrash {
+    font-size: 10rem;
+    margin-right: 10px;
+}
+
+.bookmarkList .faMinusSquare,
+.bookmarkList .faPlusSquare {
+    font-size: 0.5rem;
+    margin-left: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+}

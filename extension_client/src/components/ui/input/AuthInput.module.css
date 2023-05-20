@@ -1,0 +1,21 @@
+.authInput {
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    background-color: #fff;
+    color: #333;
+}
+
+.authInput:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+.authInput::placeholder {
+    color: #aaa;
+}

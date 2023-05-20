@@ -1,0 +1,88 @@
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Root and App container styles */
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bookmark {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bookmark__editable,
+.bookmark_static {
+    margin-bottom: 10px;
+}
+
+.bookmark__editable > div,
+.bookmark_static > div {
+    margin-bottom: 5px;
+}
+
+.bookmark__btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+/* Red animation for remove button */
+.fade-out-remove {
+    animation: fadeOutRemove 0.5s ease;
+}
+
+@keyframes fadeOutRemove {
+    0% { background-color: #f44336; }
+    100% { background-color: transparent; }
+}
+
+/* Green animation for save button */
+.fade-out-save {
+    animation: fadeOutSave 0.5s ease;
+}
+
+@keyframes fadeOutSave {
+    0% { background-color: #4CAF50; }
+    100% { background-color: transparent; }
+}
+
+/* Blue animation for edit button */
+.fade-out-edit {
+    animation: fadeOutEdit 0.5s ease;
+}
+
+@keyframes fadeOutEdit {
+    0% { background-color: #2196F3; }
+    100% { background-color: transparent; }
+}
+
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+}

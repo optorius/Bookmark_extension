@@ -1,0 +1,31 @@
+.bookmarkFilter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.bookmarkFilter .SearchInput {
+    flex-basis: 60%;
+    padding: 10px 15px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.bookmarkFilter .custom-select-container {
+    flex-basis: 30%;
+}
+
+.bookmarkFilter .custom-select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #333;
+    background: #FFF;
+    cursor: pointer;
+}

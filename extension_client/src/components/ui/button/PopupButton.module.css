@@ -1,0 +1,30 @@
+.popupButton {
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #494949;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0.8rem
+}
+
+.popupButton:hover {
+    background-color: #666;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.popupButton:active {
+    transform: scale(0.98);
+}
+
+.popupButton:disabled {
+    color: #7a7a7a;
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+}

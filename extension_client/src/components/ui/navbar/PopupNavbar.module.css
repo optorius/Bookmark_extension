@@ -1,0 +1,20 @@
+.popupNavbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    background: #333;
+    color: #FFF;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.popupNavbar a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 0 20px;
+    transition: color 0.3s;
+}
+
+.popupNavbar a:hover {
+    color: #CCC;
+}

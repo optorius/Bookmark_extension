@@ -1,0 +1,52 @@
+.storageForm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f6f8fa;
+    font-family: 'Roboto', sans-serif;
+    min-width: 450px;
+    min-height: 450px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.storageForm h3 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+    margin:5px;
+    text-align: center;
+}
+
+.storageForm p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.settingsIcon {
+    cursor: pointer;
+    fill: #757575;
+    transition: fill 0.3s ease;
+}
+
+.settingsIcon:hover {
+    fill: #333;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.icon {
+    cursor: pointer;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.icon:hover {
+    color: #999;
+}
