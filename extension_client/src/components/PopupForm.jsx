@@ -15,7 +15,9 @@ import bookmarksService from '../services/BookmarksService';
 import { BookmarkEntity } from "../support/BookmarkEntity";
 import TopForm from './TopForm';
 import PopupLabel from './ui/label/PopupLabel';
-const validator = require('validator');
+
+import ModalButton from "./ui/button/ModalButton";
+import CustomModal from "./ui/modal/CustomModal";
 
 // я знаю что можно избавиться от дублирования в этой функции, 5/18/2023
 const PopupForm = observer(() => {
@@ -23,6 +25,22 @@ const PopupForm = observer(() => {
     const [bmark, setBmark] = useState(BookmarkEntity);
     const [previousCategory, setPreviousCategory] = useState(BookmarkEntity.category);
     const [activeTab, setActiveTab] = useState(null);
+
+
+    const [errorModal, setErrorModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [successModal, setSuccessModal] = useState(false);
+
+    const handleError = (message) => {
+        setErrorMessage(message || 'An error occurred');
+        setErrorModal(true);
+    };
+
+    const handleSuccess = (message) => {
+        setSuccessMessage(message);
+        setSuccessModal(true);
+    };
 
     // popup state: 0 not added, 1 - not added, but can restore it, 2 - edit mode
     const [popupState, setPopupState] = useState( 0 );
@@ -51,7 +69,7 @@ const PopupForm = observer(() => {
                     setPreviousCategory(bookmarks[index].category);
                     setIsLocked( bookmarks[index].state.verifiable );
 
-                    if ( !bookmarks[index].state.available ) { // state 1
+                    if ( !bookmarks[index].state.available  ) { // state 1
                         setPopupState( 1 );
                         // this bookmark in trash
                         return;
@@ -130,7 +148,16 @@ const PopupForm = observer(() => {
             console.log( "Updated categories: ",  localStorage.getItem('categories') );
     };
 
+    const isUrlValid = ( url ) => {
+        return true;
+    }
+
     const saveBookmark = async(e) => {
+        const isValid = isUrlValid( bmark.url );
+        if ( !isValid ) {
+            return;
+        }
+
         e.preventDefault();
         setPopupState(2);
         const newBmark = { ...bmark,  id : generateUniqueID(), dateAdded: new Date().toLocaleString() };
@@ -153,8 +180,9 @@ const PopupForm = observer(() => {
     };
 
     const restoreBookmark = async() => {
-        if ( !store.settings.removeToTrash )
+        if ( bmark.state.available )
         {
+            console.log('cannot restore');
             return;
         }
         setPopupState(2); // it is added
@@ -185,6 +213,27 @@ const PopupForm = observer(() => {
     return (
         <div className={classes.PopupForm}>
             <form>
+                <CustomModal visible={errorModal} setVisible={setErrorModal}>
+                        <div className={classes.modalContent}>
+                            <h2>Oops...</h2>
+                            <div className={classes.errorMessage}>{errorMessage}</div>
+                            <ModalButton onClick={(e) => {
+                                e.preventDefault();
+                                setErrorModal(false)
+                            }
+                            }>I got it</ModalButton>
+                        </div>
+                </CustomModal>
+
+                <CustomModal visible={successModal} setVisible={setSuccessModal}>
+                        <div className={classes.modalContent}>
+                            <h2>Success</h2>
+                            <div className={classes.successMessage}>{successMessage}</div>
+                            <ModalButton onClick={(e) => { e.preventDefault(); setSuccessModal(false);
+                            }} >OK</ModalButton>
+                        </div>
+                </CustomModal>
+
                 <h2 style={{textAlign: 'center'}}>Bookmark extension</h2>
                 {
                     store.state === AuthState.none ? 
@@ -207,7 +256,7 @@ const PopupForm = observer(() => {
                         activated:{ store.user.email }
                     </div>: null
                 }
-                <TopForm/>
+                <TopForm handleSuccess={handleSuccess} handleError={handleError} />
                 <PopupLabel>Title</PopupLabel>
                 <PopupInput value={bmark.title} onChange={e => setBmark({...bmark, title: e.target.value})} type="text"
                              placeholder="Title"/>

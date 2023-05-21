@@ -78,10 +78,11 @@ const BookmarkItem = (props) => {
                             }
                         </div>
                         <div     style={{
-                                opacity: store.state !== AuthState.activated ? 0.4 : 1,
+                                opacity: !isEditing || store.state !== AuthState.activated ? 0.4 : 1,
                                 cursor: store.state === AuthState.activated ? 'pointer' : 'default'
                             }}
-                        className={classes.lockIcon} onClick={
+                        className={classes.lockIcon}
+                        onClick={
                             (e) => {
                             e.preventDefault();
                             if ( store.state === AuthState.activated && isEditing ) {

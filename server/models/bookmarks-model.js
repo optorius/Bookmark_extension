@@ -10,6 +10,7 @@ const BookmarkItem = new Schema({
     dateModified: {type: Date, default: Date.now},
     state: {
         available: {type: Boolean, default: true},
+        verifiable : { type: Boolean, default: true },
         reason: {type: String, default: ''}
     },
 }, {_id: false});

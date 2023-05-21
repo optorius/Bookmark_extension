@@ -17,6 +17,7 @@ const UserShema = new Schema
         settings: {
 
             compactView : {type: Boolean, default: false},
+
             removeToTrash : {type: Boolean, default: false},
 
             checkBookmarks: {

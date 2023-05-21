@@ -6,55 +6,19 @@ import LoginForm from "./LoginForm";
 import LogoutForm from "./LogoutForm";
 import RegistrationForm from "./RegistrationForm";
 import classes from './TopForm.module.css';
-import ModalButton from "./ui/button/ModalButton";
 import PopupLabel from "./ui/label/PopupLabel";
 import AuthModal from "./ui/modal/AuthModal";
 import CustomModal from "./ui/modal/CustomModal";
+import ModalButton from "./ui/button/ModalButton";
 
-const TopForm = observer(() => {
+const TopForm = observer( ({handleSuccess, handleError}) => {
 
     const [modalLogin, setModalLogin] = useState(false);
     const [modalRegister, setModalRegister] = useState(false);
     const [isAbout, setIsAbout] = useState( false );
 
-    const [errorModal, setErrorModal] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
-    const [successModal, setSuccessModal] = useState(false);
-
-    const handleError = (message) => {
-        setErrorMessage(message || 'An error occurred');
-        setErrorModal(true);
-    };
-
-    const handleSuccess = (message) => {
-        setSuccessMessage(message);
-        setSuccessModal(true);
-    };
-
     return (
         <div className={classes.TopForm}>
-            <CustomModal visible={errorModal} setVisible={setErrorModal}>
-                    <div className={classes.modalContent}>
-                        <h2>Oops...</h2>
-                        <div className={classes.errorMessage}>{errorMessage}</div>
-                        <ModalButton onClick={(e) => {
-                            e.preventDefault();
-                            setErrorModal(false)
-                        }
-                        }>I got it</ModalButton>
-                    </div>
-            </CustomModal>
-
-            <CustomModal visible={successModal} setVisible={setSuccessModal}>
-                    <div className={classes.modalContent}>
-                        <h2>Success</h2>
-                        <div className={classes.successMessage}>{successMessage}</div>
-                        <ModalButton onClick={(e) => { e.preventDefault(); setSuccessModal(false);
-                        }} >OK</ModalButton>
-                    </div>
-            </CustomModal>
-
             <Link to="/storage">Storage</Link>
             <AuthModal
                 visible={modalLogin}

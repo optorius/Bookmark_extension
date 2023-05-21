@@ -9,7 +9,6 @@ const settingsController = require('../controllers/settings-controller');
 const mailController = require( '../controllers/mail-controller' );
 
 const router = new Router();
-
 // для валидации тело запроса
 const {body} = require('express-validator');
 

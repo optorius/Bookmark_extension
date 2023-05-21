@@ -22,7 +22,8 @@ api_axios.interceptors.response.use( (config) => {
     try {
         // все данные для запроса
         const res = error.config;
-        if (error.response.status >= 401 && error.config && !error.config._isRetry) {
+        // ждем именно 401 для рефреш
+        if (error.response.status == 401 && error.config && !error.config._isRetry) {
             res._isRetry = true;
             const url = API_URL + '/refresh'
             const response = await axios.get(url, {withCredentials: true})
