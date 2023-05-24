@@ -2,7 +2,7 @@ const { Schema, model, Types } = require( 'mongoose' );
 
 const BookmarkItem = new Schema({
     id: {type: String, required: true },
-    url: {type: String, required: true, unique: true},
+    url: {type: String, required: true },
     title: {type: String, required: true},
     desc: String,
     category: { type: String },
@@ -24,3 +24,4 @@ const BookmarksShema = new Schema
 );
 
 module.exports = model('Bookmarks', BookmarksShema);
+

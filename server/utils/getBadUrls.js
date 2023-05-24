@@ -57,13 +57,6 @@ const getBadUrls = async (urls) => {
   let badURLs = [];
   for (let url of urls) {
     try {
-      new URL(url);
-    } catch (_) {
-      badURLs.push({ url: url, reason: "Invalid URL" });
-      continue;
-    }
-
-    try {
       const responseSafety = await axios.post(
         "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=" +
           API_KEY,
