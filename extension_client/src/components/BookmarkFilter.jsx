@@ -18,7 +18,8 @@ const BookmarkFilter = ( { filter, setFilter } ) => {
                 options={[
                     {value: 'title', name: 'By title'},
                     {value: 'desc', name: 'By description'},
-                    {value: 'url', name: 'By URL'}
+                    {value: 'url', name: 'By URL'},
+                    {value: 'dateAdded', name: 'By added date'}
                 ]}
             />
         </div>

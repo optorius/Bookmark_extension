@@ -12,7 +12,7 @@ import CustomTextarea from "./ui/textarea/CustomTextarea";
 
 import { generateUniqueID } from "web-vitals/dist/modules/lib/generateUniqueID";
 import bookmarksService from '../services/BookmarksService';
-import { BookmarkEntity } from "../support/BookmarkEntity";
+import { BookmarkEntity } from "../entity/BookmarkEntity";
 import TopForm from './TopForm';
 import PopupLabel from './ui/label/PopupLabel';
 
@@ -215,7 +215,7 @@ const PopupForm = observer(() => {
             <form>
                 <CustomModal visible={errorModal} setVisible={setErrorModal}>
                         <div className={classes.modalContent}>
-                            <h2>Oops...</h2>
+                            <h4>Oops...</h4>
                             <div className={classes.errorMessage}>{errorMessage}</div>
                             <ModalButton onClick={(e) => {
                                 e.preventDefault();
@@ -227,7 +227,7 @@ const PopupForm = observer(() => {
 
                 <CustomModal visible={successModal} setVisible={setSuccessModal}>
                         <div className={classes.modalContent}>
-                            <h2>Success</h2>
+                            <h4>Success</h4>
                             <div className={classes.successMessage}>{successMessage}</div>
                             <ModalButton onClick={(e) => { e.preventDefault(); setSuccessModal(false);
                             }} >OK</ModalButton>
@@ -236,26 +236,17 @@ const PopupForm = observer(() => {
 
                 <h2 style={{textAlign: 'center'}}>Bookmark extension</h2>
                 {
-                    store.state === AuthState.none ? 
+                    store.state === AuthState.none
+                    ?
                     <div className={classes.status}>
                     no logged
-                    </div> : null
-                }
-                {
-
-                    store.state === AuthState.not_activated ?
-                    <div className={classes.status}>
-                    not activated:{ store.user.email }
                     </div>
-                    : null
-
-                }
-                {
-                    store.state === AuthState.activated ?
+                    :
                     <div className={classes.status}>
-                        activated:{ store.user.email }
-                    </div>: null
+                        { store.user.email }
+                    </div>
                 }
+
                 <TopForm handleSuccess={handleSuccess} handleError={handleError} />
                 <PopupLabel>Title</PopupLabel>
                 <PopupInput value={bmark.title} onChange={e => setBmark({...bmark, title: e.target.value})} type="text"

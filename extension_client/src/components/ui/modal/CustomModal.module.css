@@ -22,10 +22,10 @@
 .customModalContent {
     position: relative;
     background-color: #f8f9fa;
-    margin: auto;
+    margin: 0;
     padding: 20px;
     border: 1px solid #888;
-    width: 95%;
+    width: 90%;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
     border-radius: 10px;
     transform: scale(0.8);

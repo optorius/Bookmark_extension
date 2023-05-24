@@ -3,21 +3,23 @@
   "name": "Bookmark extension",
   "version": "2.0",
   "description": "Storage of bookmarks",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+
   "icons": {
     "192": "star.png"
   },
   "browser_action": {
+    "default_title" : "Bookmark extension",
     "browser_style": true,
     "default_icon": "star.png",
     "default_popup": "index.html"
   },
+
   "background": {
     "scripts": ["../src/index.js"]
-  },
+  }
 
-  "permissions": [
-    "tabs",
-    "storage",
-    "http://localhost:5050/"
-  ]
 }

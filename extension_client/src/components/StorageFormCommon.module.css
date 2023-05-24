@@ -7,7 +7,7 @@
     background-color: #f6f8fa;
     font-family: 'Roboto', sans-serif;
     min-width: 450px;
-    min-height: 450px;
+    min-height: 550px;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 

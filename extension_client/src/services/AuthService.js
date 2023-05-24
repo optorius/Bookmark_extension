@@ -2,8 +2,6 @@ import api_axios from "../http";
 
 export default class AuthService {
     static async login( email, password ) {
-        // Axios всегда возращает объект
-        // Указываем адрес endpoint
         return api_axios.post('/login', { email, password } );
     }
 

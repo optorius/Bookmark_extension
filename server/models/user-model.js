@@ -1,7 +1,6 @@
-// Схема данных
 // Сущность пользователя
-
 const {Schema, model } = require('mongoose');
+const default_interval = 24 * 60 * 60 * 1000;  // is one day
 
 const UserShema = new Schema
 (
@@ -10,9 +9,9 @@ const UserShema = new Schema
 
         password: {type: String, required: true},
 
-        isActivated: {type: Boolean, default: false}, // активация логина
+        isActivated: {type: Boolean, default: false},
 
-        activationLink: {type: String}, // ссылка для активации
+        activationLink: {type: String},
 
         settings: {
 
@@ -21,16 +20,17 @@ const UserShema = new Schema
             removeToTrash : {type: Boolean, default: false},
 
             checkBookmarks: {
-                interval: {type: Number, default: 2 * 60 * 1000 },
-                actionDate: {type: Date, default: () => Date.now() + 2 * 60 * 1000 }
+                interval: {type: Number, default: default_interval },
+                actionDate: {type: Date, default: () => Date.now() + default_interval }
             },
 
             deleteBookmarks: {
-                interval: {type: Number, default: 2 * 60 * 1000 } ,
-                actionDate: {type: Date, default: () => Date.now() + 2 * 60 * 1000 }
+                interval: {type: Number, default: default_interval } ,
+                actionDate: {type: Date, default: () => Date.now() + default_interval }
             }
         }
     }
 );
 
-module.exports = model('User', UserShema); // экспортируем модель на основании этой схемы, которую мы сделали
+module.exports = model('User', UserShema);
+

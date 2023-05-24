@@ -8,7 +8,7 @@ import useAsyncStorage from "../hooks/useAsyncStorage";
 import { useBookmarks } from "../hooks/useBookmarks";
 import bookmarksService from '../services/BookmarksService';
 import store, { AuthState } from "../store/store";
-import { categorizeBookmarks } from '../support/categorizeBookmarks';
+import { categorizeBookmarks } from './support/categorizeBookmarks';
 import BookmarkFilter from "./BookmarkFilter";
 import BookmarkList from "./BookmarkList";
 import classes from "./StorageFormCommon.module.css";
@@ -16,6 +16,7 @@ import StorageSettingsForm from "./StorageSettingsForm";
 import CustomButton from "./ui/button/CustomButton";
 import CustomModal from "./ui/modal/CustomModal";
 import TrashModal from './ui/modal/TrashModal';
+import StorageLabel from './ui/label/StorageLabel';
 
 const StorageForm = observer(() => {
     const [modalTrash, setModalTrash] = useState(false);
@@ -115,12 +116,16 @@ const StorageForm = observer(() => {
             </CustomModal>
             <TrashModal visible={modalTrash} setVisible={setModalTrash} >
                 {
+
                     blackBookmarks.length != 0 ?
+                        <>
+                        <h3>Trash</h3>
                         <BookmarkList bookmarks={categorizeBookmarks(blackBookmarks)}
                         removeBookmark={removeBookmark}
                         updateBookmark={updateBookmark}
                         restoreBookmark={updateBookmark}
                         />
+                        </>
                         : <div> Trash is empty </div>
                 }
             </TrashModal>
@@ -138,28 +143,29 @@ const StorageForm = observer(() => {
                 <SettingsIcon setVisible={setModalSettings}/>
                 </div>
             </div>
-
-
-                {
-                    (whiteBookmarks.length != 0) ?
-                        (
-                            <>
-                                <h3>Categories</h3>
-                                {
-                                    !store.settings['compactView'] ?
-                                        <BookmarkFilter filter={filter} setFilter={setFilter} /> : null}
-                                <BookmarkList bookmarks={sortedAndSearchedPosts} removeBookmark={removeBookmark} updateBookmark={updateBookmark} restoreBookmark={null} />
-                            </>
-                        ) :
-                        (
-                            <div>
-                                <p>No bookmarks found.</p>
-                                <CustomButton onClick={() => navigate('/popup')}>
-                                    Add Bookmark
-                                </CustomButton>
-                            </div>
-                        )
-                }
+            <h3>Storage</h3>
+            {
+                (whiteBookmarks.length != 0) ?
+                    (
+                        <>
+                            {
+                                !store.settings['compactView']
+                                ?
+                                <BookmarkFilter filter={filter} setFilter={setFilter} />
+                                : null
+                            }
+                            <BookmarkList bookmarks={sortedAndSearchedPosts} removeBookmark={removeBookmark} updateBookmark={updateBookmark} restoreBookmark={null} />
+                        </>
+                    ) :
+                    (
+                        <div>
+                            <p>No bookmarks found.</p>
+                            <CustomButton onClick={() => navigate('/popup')}>
+                                Add Bookmark
+                            </CustomButton>
+                        </div>
+                    )
+            }
             </div>
             );
 });

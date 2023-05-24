@@ -47,20 +47,20 @@ const SettingsForm = ( { setVisible }) => {
 
     return (
         <form onSubmit={handleSubmit} className={classes['storage-settings-form']}>
+            <h2>Settings</h2>
             {
-                disabled ? <StorageLabel >Bottom settings only for authorized account:</StorageLabel> :  null
+                disabled ? <StorageLabel >The next setting is only accessible to authorized accounts:</StorageLabel> :  null
             }
-
-            <StorageLabel style={{opacity: disabled ? 0.2 : 1}}>Check URLs interval</StorageLabel>
+            <StorageLabel style={{opacity: disabled ? 0.2 : 1}}>URLs checking interval in days</StorageLabel>
             <SettingsInput value={checkBookmarks} onChange={e => setCheckBookmarks( e.target.value )} type="text" placeholder="checkBookmarks"
             disabled={disabled}
             style={{opacity: disabled ? 0.2 : 1}}/>
 
-            <StorageLabel>Trash cleanup interval</StorageLabel>
+            <StorageLabel>Trash cleanup interval in days</StorageLabel>
             <SettingsInput value={deleteBookmarks} onChange={e => setDeleteBookmarks( e.target.value )} type="text" placeholder="clean up"/>
 
             <StorageLabel htmlFor="compactView">
-                <span>Storage compact view</span>
+                <span>Compact view for storage</span>
                 <Switch
                     checked={compactView}
                     onChange={setcompactView}
@@ -71,7 +71,7 @@ const SettingsForm = ( { setVisible }) => {
             </StorageLabel>
             {
             <StorageLabel htmlFor="setting2">
-                <span>Bookmark deletion confirm</span>
+                <span>Double deletion</span>
                 <Switch
                     checked={removeToTrash}
                     onChange={setremoveToTrash}

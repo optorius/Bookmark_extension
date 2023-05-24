@@ -5,7 +5,7 @@ import { API_URL } from "../http";
 import AuthService from "../services/AuthService";
 import bookmarksService from "../services/BookmarksService";
 import settingsService from "../services/SettingsService";
-import { BookmarkEntity } from "../support/BookmarkEntity";
+import { BookmarkEntity } from "../entity/BookmarkEntity";
 
 async function checkAction(callback) {
     try {
@@ -50,12 +50,12 @@ class Store {
             'compactView' : false,
             'removeToTrash' : false,
             'deleteBookmarks' : {
-                'interval' : 0 * 2 * 60 * 1000,
-                'actionDate': Date.now() + 0 *2 * 60 * 1000
+                'interval' : 24 * 60 * 60 * 1000,
+                'actionDate': Date.now() + 24 * 60 * 60 * 1000
             },
             'checkBookmarks' : {
-                'interval' : 0 *2 * 60 * 1000,
-                'actionDate' : Date.now() + 0 *2 * 60 * 1000
+                'interval' : 24 * 60 * 60 * 1000,
+                'actionDate' : Date.now() + 24 * 60 * 60 * 1000
             }
     };
 

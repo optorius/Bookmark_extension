@@ -10,6 +10,13 @@
     margin-bottom: 20px;
 }
 
+.TopForm h2 {
+    color: #222;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
 .TopForm div,
 .TopForm a {
     color: #FFF;

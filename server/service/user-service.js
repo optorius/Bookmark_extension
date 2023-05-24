@@ -20,7 +20,7 @@ async function generateToken( User ) {
     // генерация токенов
     const tokens = tokenService.generate( {...userDto} );
 
-    // сохранение токенов в базу данных
+    // сохранение refresh-токена в базу данных
     await tokenService.save(userDto.id, tokens.refreshToken);
 
     console.log("generated tokens");

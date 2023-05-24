@@ -51,7 +51,7 @@ const TopForm = observer( ({handleSuccess, handleError}) => {
                 Sign up
             </div>
 
-            <CustomModal visible={isAbout} setVisible={setIsAbout}>
+            <AuthModal visible={isAbout} setVisible={setIsAbout}>
             <div className={classes.modalContent}>
                         <h2> About </h2>
                         <div className={classes.About}>
@@ -68,7 +68,7 @@ const TopForm = observer( ({handleSuccess, handleError}) => {
                         }
                         }>OK</ModalButton>
                     </div>
-            </CustomModal>
+            </AuthModal>
             <div style={{ cursor: 'pointer' }}
                 onClick={(e) => {
                     e.preventDefault();
