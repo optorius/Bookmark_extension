@@ -25,17 +25,17 @@ class TokenService {
         console.log( "trying to remove a token:" + token );
         const tokenData = await tokenModel.deleteOne({refreshToken: token});
         const checker = await tokenModel.findOne({refreshToken: token})
-        if (!checker) {
-            console.log( "successfully removed" );
-        } else {
-            console.log( "token not removed" );
-        }
-        return tokenData; 
+        return tokenData;
     }
 
     async find( token ) {
         const tokenData = await tokenModel.findOne( { refreshToken: token } );
         return tokenData; // возвращается сама запись
+    }
+
+    async deleteTokens( userId )
+    {
+        await tokenModel.deleteMany( { user: userId } );
     }
 
     validateAccess( token ) {

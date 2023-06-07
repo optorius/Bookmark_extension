@@ -10,11 +10,11 @@ class BookmarksController {
         }
     }
 
-    async delBookmark(req, res, next) {
+    async removeBookmark(req, res, next) {
         try {
             const { id } = req.params;
             console.log("deleting with id:", id);
-            await bookmarksService.delBookmark(req.user.id, id);
+            await bookmarksService.removeBookmark(req.user.id, id);
             return res.json({ message: "Bookmark deleted" });
         } catch( error ) {
             next(error);

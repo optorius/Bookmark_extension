@@ -17,7 +17,8 @@ router.post('/registration',
     userController.registration
 );
 router.post('/login', userController.login);
-router.post('/reset-password', userController.resetPassword);
+router.post('/code', userController.sendCode);
+router.put('/reset-password', userController.resetPassword);
 router.get('/logout', userController.logout);
 router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
@@ -28,7 +29,7 @@ router.get('/users/:id', authMiddleware, userController.getUsers);
 router.post('/bookmarks', authMiddleware, bookmarksController.pushBookmark);
 router.get('/bookmarks', authMiddleware, bookmarksController.getBookmarks);
 router.put('/bookmarks', authMiddleware, bookmarksController.editBookmark);
-router.delete('/bookmarks/:id', authMiddleware, bookmarksController.delBookmark);
+router.delete('/bookmarks/:id', authMiddleware, bookmarksController.removeBookmark);
 router.post("/message", authMiddleware, mailController.sendMail);
 router.get('/secure/bookmarks', authMiddleware, secureController.getBadBookmarks);
 

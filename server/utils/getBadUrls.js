@@ -81,7 +81,7 @@ const getBadUrls = async (urls) => {
         await checkCertificate(url);
       } catch (error) {
         console.log("error:", error);
-        badURLs.push({ url: url, reason: error });
+        badURLs.push({ url: url, reason: error.message });
         continue;
       }
 

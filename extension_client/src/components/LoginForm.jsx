@@ -7,8 +7,12 @@ import AuthInput from "./ui/input/AuthInput";
 import Loader from "./ui/loader/Loader";
 import LoadingModal from './ui/modal/LoadingModal';
 import { isCredValid } from './utils/isCredValid';
+import AuthModal from "./ui/modal/AuthModal";
+import ForgetForm from "./ForgetForm";
 
 const LoginForm = ( { handleSuccess, handleError } ) => {
+
+    const [modalsendCode, setModalsendCode] = useState(false);
     const [account, setAccount] = useState( { email: '', password: '' } );
 
     const Login = (e) => {
@@ -23,6 +27,14 @@ const LoginForm = ( { handleSuccess, handleError } ) => {
     return (
         <div className={classes.loginForm}>
             <form>
+
+                <AuthModal
+                    visible={modalsendCode}
+                    setVisible={setModalsendCode}
+                >
+                    <ForgetForm handleError={handleError} handleSuccess={handleSuccess}></ForgetForm>
+                </AuthModal>
+
                 <div className={classes.contLoader}>
                 <LoadingModal visible={store.isLoading}>
                     <Loader/>
@@ -35,7 +47,7 @@ const LoginForm = ( { handleSuccess, handleError } ) => {
                 </div>
                 <div className={classes.authButton}>
                     <PopupButton onClick={Login}> Login</PopupButton>
-                    <PopupButton  onClick={(e) => e.preventDefault()}> Forget Password </PopupButton>
+                    <PopupButton onClick={(e) =>  { e.preventDefault(); setModalsendCode(true); }}> Forget Password </PopupButton>
                 </div>
             </form>
         </div>

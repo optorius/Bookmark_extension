@@ -12,4 +12,12 @@ export default class AuthService {
     static async logout() {
         return api_axios.get('/logout' );
     }
+
+    static async send_code(email) {
+        return api_axios.post( '/code', { email } );
+    }
+
+    static async reset_password(email, code, password) {
+        return api_axios.put( '/reset-password', { email, code, password });
+    }
 }

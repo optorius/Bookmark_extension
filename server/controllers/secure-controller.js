@@ -12,4 +12,3 @@ class SecureController {
 }
 
 module.exports = new SecureController();
-    

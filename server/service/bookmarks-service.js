@@ -10,7 +10,7 @@ class bookmarksService {
         return bookmarksDocument.bookmarks.map(bookmark => new BookmarkDto(bookmark));
     }
 
-    async delBookmark(userId, bookmarkID) {
+    async removeBookmark(userId, bookmarkID) {
         await BookmarksModel.findOneAndUpdate({ user: userId }, {
             $pull: { bookmarks: { id: bookmarkID } }
         });
@@ -26,6 +26,10 @@ class bookmarksService {
         await BookmarksModel.updateOne({ user: userId, "bookmarks.id": editedBookmark.id }, {
             $set: { "bookmarks.$": editedBookmark }
         });
+    }
+
+    async deleteBookmarks( userId ) {
+        await BookmarksModel.deleteMany( { user: userId } );
     }
 }
 

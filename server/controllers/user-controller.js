@@ -77,9 +77,8 @@ class UserController {
         try {
             const activationLink = req.params.link;
             await userService.activate(activationLink);
-
             /// CLIENT URL:
-            // return res.redirect('');
+            return res.redirect('https://github.com/optorius/Bookmark_extension');
         } catch (error) {
             next(error);
         }
@@ -107,17 +106,34 @@ class UserController {
         }
     }
 
-    async resetPassword( req, res, next ) {
+    async sendCode( req, res, next ) {
         try {
             const { email } = req.body;
-            await mailService.sendMail( email, "Bookmark extension", 
+            const code = await userService.sendCode( email );
+            await mailService.sendMail(email, "Bookmark Extension - Password Reset",
             `<div>
-                12345
+                <h2>Password Reset</h2>
+                <p>Dear user,</p>
+                <p>We have received a request to reset your password for the Bookmark extension. Please use the following code to proceed with the password reset:</p>
+                <p><strong>Reset Code:</strong> ${code}</p>
+                <p>If you did not request a password reset, please ignore this email.</p>
+                <p>Best regards,</p>
+                <p>The Bookmark Team</p>
             </div>`
             );
-            return res.json ( { message: "hello world"} );
-        } catch( error ) {
-            next( error );
+            return res.json({ message: "Password reset code has been sent to your email." });
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async resetPassword( req, res, next ) {
+        try {
+            const { email, code, password } = req.body;
+            const result = await userService.resetPassword( email, code, password );
+            return res.json( { message: "Successfully changed your password!" } );
+        } catch(error) {
+            next(error);
         }
     }
 

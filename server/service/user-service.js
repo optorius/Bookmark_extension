@@ -12,6 +12,9 @@ const UserDto = require('../dto/user-dto');
 const ApiError = require('../exceptions/api-error');
 const { refresh } = require('../controllers/user-controller');
 const BookmarksModel = require('../models/bookmarks-model');
+const optionalService = require('./optional-service');
+const bookmarksService = require('./bookmarks-service')
+const getHashedPass = require('../utils/getHashedPass');
 
 async function generateToken( User ) {
     const userDto = new UserDto( User );
@@ -41,13 +44,12 @@ class UserService {
             throw ApiError.badRequest("User with " + email + " already is exist in Database");
         }
 
-        const salt = 5;
-        const hashedPassword = await bcrypt.hash(password, salt);
+        const hashedPassword = await getHashedPass( password );
 
         const activationLink = uuid.v4();
 
         const newUser = await UserModel.create({ email, password : hashedPassword, activationLink });
-        await BookmarksModel.create( { user: newUser.id }); 
+        await BookmarksModel.create( { user: newUser.id });
 
         // Отправляем письмо на активацию
         const link = process.env.API_URL + '/activate/' + activationLink;
@@ -96,7 +98,7 @@ class UserService {
 
         const isPasswordEqual = await bcrypt.compare(password, user.password);
         if ( !isPasswordEqual ) {
-            throw ApiError.badRequest( 'Password incorrect' );
+            throw ApiError.badRequest( 'Password is incorrect' );
         }
         return generateToken( user );
     }
@@ -109,26 +111,29 @@ class UserService {
 
     async delete( id ) {
         const user = await UserModel.findOne( { _id : id });
-        console.log("trying to delete");
+
         await user.deleteOne();
-        console.log("deleteMany");
 
-        await TokenModel.deleteMany( { user: user._id } );
+        await tokenService.deleteTokens( id );
 
-        await BookmarksModel.deleteMany( { user: user._id} );
+        await bookmarksService.deleteBookmarks( id );
 
-        console.log("success delete");
+        await optionalService.deleteOptional( id );
+
     }
 
+    // !-!
     async refresh( refreshToken ) {
         const userData = tokenService.validateRefresh( refreshToken );
         if (!userData) {
             console.log("Cannot validate your refresh token");
+            throw ApiError.UnauthorizedError();
         }
 
         const tokenInDB = await tokenService.find( refreshToken );
         if (!tokenInDB) {
             console.log("Cannot find refresh token in DataBase");
+            throw ApiError.UnauthorizedError();
         }
 
         const user = await UserModel.findById(userData.id);
@@ -140,6 +145,45 @@ class UserService {
         return user;
     }
 
+    async sendCode( email ) {
+        const user = await UserModel.findOne({ email });
+        if (!user) {
+            throw ApiError.badRequest( "User with " + email + " does not exist in Database" );
+        }
+        const resetCode = 123456;
+        console.log( "user._id:", user._id );
+        const result = await optionalService.saveResetCode( user._id, resetCode );
+        return resetCode;
+    }
+
+    async resetPassword( email, code, password ) {
+        console.log("starting to reset a password");
+
+        const user = await UserModel.findOne( { email } );
+        if (!user) {
+            throw ApiError.badRequest( "User with " + email + " does not exist in Database" );
+        }
+
+        if ( !user.isActivated ) {
+            throw ApiError.badRequest( "User not activated!, Please activate your profile at first" );
+        }
+
+        const optional = await optionalService.getOptional( user._id );
+        if (!optional) {
+            throw ApiError.badRequest( "Reset code is not found!" );
+        }
+
+        if ( optional.resetCode != code ) {
+            throw ApiError.badRequest( "Reset code are different!" );
+        }
+
+        console.log("refreshed password" );
+        const hashedPassword = await getHashedPass( password );
+        user.password = hashedPassword;
+        user.save();
+
+        return generateToken( user );
+    }
 }
 
 module.exports = new UserService();

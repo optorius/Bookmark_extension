@@ -8,7 +8,7 @@ class SecureService
     async getBadBookmarks(userId) {
         const bookmarksDocument = await BookmarksModel.findOne({ user: userId });
         return await getBadUrls(
-            bookmarksDocument.bookmarks.filter(bookmark => bookmark.state.verifiable && !bookmark.state.available ).map( bookmark => bookmark.url )
+            bookmarksDocument.bookmarks.filter(bookmark => bookmark.state.verifiable && bookmark.state.available ).map( bookmark => bookmark.url )
         );
     }
 }

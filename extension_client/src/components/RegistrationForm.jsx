@@ -6,7 +6,7 @@ import PopupButton from "./ui/button/PopupButton";
 import AuthInput from "./ui/input/AuthInput";
 import Loader from "./ui/loader/Loader";
 import LoadingModal from "./ui/modal/LoadingModal";
-import { isCredValid } from './utils/isCredValid';
+import { isCredValid, isPasswordEqual } from './utils/isCredValid';
 
 const RegistrationForm = ({ handleSuccess, handleError }) => {
     const [account, setAccount] = useState({ email: '', password: '', confirmPassword: '' });
@@ -18,12 +18,10 @@ const RegistrationForm = ({ handleSuccess, handleError }) => {
 
     const handleSignUp = (e) => {
         e.preventDefault();
-        if ( !isCredValid( account.email, account.password, handleError ) ) {
-            return;
-        }
-
-        if (account.password !== account.confirmPassword) {
-            handleError('The passwords entered do not match. Please make sure to enter the same password in both fields.');
+        if (    !isCredValid( account.email, account.password, handleError )
+            ||  !isPasswordEqual( account.password, account.confirmPassword, handleError )
+        )
+        {
             return;
         }
 
@@ -32,7 +30,6 @@ const RegistrationForm = ({ handleSuccess, handleError }) => {
             'Registration successful! Please activate your account now.'
             + 'Follow the activation process to enjoy all the benefits and features of your new account.'))
             .catch((e) => handleError( e.message )) ;
-
     };
 
     return (
