@@ -21,6 +21,12 @@
 
   "background": {
     "scripts": ["main.6c781b24.js"]
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bookmarkex0@gmail.com"
+    }
   }
 
 }
