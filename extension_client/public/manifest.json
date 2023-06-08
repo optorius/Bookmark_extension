@@ -11,7 +11,8 @@
   "icons": {
     "192": "star.png"
   },
-  "browser_action": {
+
+  "action": {
     "default_title" : "Bookmark extension",
     "browser_style": true,
     "default_icon": "star.png",
