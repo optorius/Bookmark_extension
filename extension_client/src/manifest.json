@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Bookmark extension",
   "version": "2.0",
   "description": "Storage of bookmarks",
@@ -19,7 +19,7 @@
   },
 
   "background": {
-    "scripts": ["main.6c781b24.js"]
+    "scripts": ["../src/index.js"]
   }
 
 }
