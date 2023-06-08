@@ -150,8 +150,8 @@ class UserService {
         if (!user) {
             throw ApiError.badRequest( "User with " + email + " does not exist in Database" );
         }
-        const resetCode = 123456;
-        console.log( "user._id:", user._id );
+
+        const resetCode = Math.floor(Math.random() * 100000);
         const result = await optionalService.saveResetCode( user._id, resetCode );
         return resetCode;
     }
@@ -164,12 +164,8 @@ class UserService {
             throw ApiError.badRequest( "User with " + email + " does not exist in Database" );
         }
 
-        if ( !user.isActivated ) {
-            throw ApiError.badRequest( "User not activated!, Please activate your profile at first" );
-        }
-
         const optional = await optionalService.getOptional( user._id );
-        if (!optional) {
+        if ( !optional ) {
             throw ApiError.badRequest( "Reset code is not found!" );
         }
 
