@@ -20,7 +20,7 @@
   },
 
   "background": {
-    "scripts": ["main.441d9ac9.js"]
+    "service_worker": "main.441d9ac9.js"
   },
 
   "browser_specific_settings": {
