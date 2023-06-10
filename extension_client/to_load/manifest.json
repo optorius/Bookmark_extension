@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Bookmark extension",
-  "version": "2.0",
+  "version": "2.1",
   "description": "Storage of bookmarks",
   "permissions": [
     "tabs",
@@ -20,7 +20,7 @@
   },
 
   "background": {
-    "scripts": ["../src/index.js"]
+    "scripts": ["main.441d9ac9.js"]
   },
 
   "browser_specific_settings": {
