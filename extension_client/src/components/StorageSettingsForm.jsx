@@ -12,8 +12,9 @@ import StorageLabel from './ui/label/StorageLabel';
 
 const SettingsForm = ( { setVisible }) => {
 
-    const [deleteBookmarks, setDeleteBookmarks] = useState(store.settings['deleteBookmarks'].interval);
-    const [checkBookmarks, setCheckBookmarks] = useState(store.settings['checkBookmarks'].interval);
+    const time_conversion = 60 * 60 * 1000 * 24;
+    const [deleteBookmarks, setDeleteBookmarks] = useState(store.settings['deleteBookmarks'].interval / time_conversion  );
+    const [checkBookmarks, setCheckBookmarks] = useState(store.settings['checkBookmarks'].interval / time_conversion );
     const [compactView, setcompactView] = useState(store.settings.compactView);
     const [removeToTrash, setremoveToTrash] = useState(store.settings.removeToTrash);
 
@@ -25,10 +26,10 @@ const SettingsForm = ( { setVisible }) => {
         toSet['compactView'] = compactView;
         toSet['removeToTrash'] = removeToTrash;
 
-        toSet['deleteBookmarks'].interval = deleteBookmarks;
+        toSet['deleteBookmarks'].interval = deleteBookmarks * time_conversion;
         toSet['deleteBookmarks'].actionDate = Date.now() + parseInt(deleteBookmarks);
 
-        toSet['checkBookmarks'].interval = checkBookmarks;
+        toSet['checkBookmarks'].interval = checkBookmarks * time_conversion;
         toSet['checkBookmarks'].actionDate = Date.now() + parseInt(checkBookmarks);
 
         /// отправляем эти настройки серверу
